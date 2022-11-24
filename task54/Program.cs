@@ -51,17 +51,17 @@ int[,] SortArrayRows(int[,] array)
 Console.Clear();
 
 Console.Write("Введите количество строк: ");
-int a = int.Parse(Console.ReadLine()!);
+int numberOfrows = int.Parse(Console.ReadLine()!);
 Console.Write("Введите количество столбцов: ");
-int b = int.Parse(Console.ReadLine()!);
+int numberOfcolumns = int.Parse(Console.ReadLine()!);
 Console.Write("Введите значение левой границы диапазона: ");
-int left = int.Parse(Console.ReadLine()!);
+int leftEdge = int.Parse(Console.ReadLine()!);
 Console.Write("Введите значение левой границы диапазона: ");
-int right = int.Parse(Console.ReadLine()!);
+int rightEdge = int.Parse(Console.ReadLine()!);
 
 Console.WriteLine(String.Empty);
 
-int[,] workingArray = GetArray(a, b, left, right);
+int[,] workingArray = GetArray(numberOfrows, numberOfcolumns, leftEdge, rightEdge);
 Console.WriteLine("Изначальный массив: ");
 Console.WriteLine(String.Empty);
 PrintArray(workingArray);
