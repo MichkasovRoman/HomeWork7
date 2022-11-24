@@ -90,4 +90,4 @@ if (number1 == number2)
     Console.WriteLine(String.Empty);
     PrintArray(productOfarrays);
 }
-else {Console.WriteLine("Невозможно умножить нсогласованные матрицы.");}
+else {Console.WriteLine("Невозможно умножить несогласованные матрицы.");}
