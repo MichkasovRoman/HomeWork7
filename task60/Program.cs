@@ -1,50 +1,51 @@
 ﻿// Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, 
 //которая будет построчно выводить массив, добавляя индексы каждого элемента.
 
-bool SearchesEqualElements(int[,,] array3d, int number)
-{ //метод ищет элементы трехмерного массива, равные заданному числу number
-    int firstDim = array3d.GetLength(0);
-    int secondDim = array3d.GetLength(1);
-    int thirdDim = array3d.GetLength(2);
-    for (int i = 0; i < firstDim; i++)
+int[] GetArrayWithoutDuplicate(int size)
+{ // метод генерирует одномерный массив с неповторяющимися двузначными элементами
+    int[] array = new int[size];
+    bool SearchesEqualElements(int number, int count)
     {
-        for (int j = 0; j < secondDim; j++)
+        for (int i = 0; i < count; i++)
         {
-            for (int k = 0; k < thirdDim; k++)
-            {
-                if (array3d[i, j, k] != number) {return true;}
-            }
+            if (array[i] == number) {return true;}
         }
+        return false;
     }
-    return false;
+    for (int i = 0; i < size; i++)
+    {
+        do
+        {
+            array[i] = new Random().Next(10, 100);
+        }
+        while(SearchesEqualElements(array[i], i));
+    }
+    return array;
 }
 
-int[,,] GetArrayWithoutDuplicate(int firstDim, int secondDim, int thirdDim)
-{//метод строит трехмерный массив без повторяющихся двузначных элементов
+int[,,] GetArray3d(int firstDim, int secondDim, int thirdDim)
+{ //метод генерирует трехмерный массив с неповторяющимися двухначными элементами
+    int[] array = GetArrayWithoutDuplicate(firstDim * secondDim * thirdDim);
     int[,,] array3d = new int[firstDim, secondDim, thirdDim];
+    int index = 0;
     for (int i = 0; i < firstDim; i++)
     {
         for (int j = 0; j < secondDim; j++)
         {
             for (int k = 0; k < thirdDim; k++)
             {
-                do
-                {
-                    array3d[i, j, k] = new Random().Next(10, 100);
-                }
-                while(!SearchesEqualElements(array3d, array3d[i, j, k]));
+                array3d[i, j, k] = array[index++];
             }
         }
     }
     return array3d;
 }
 
-void GetLineArray(int[,,] array3d)
+void GetLineArray3d(int[,,] array3d)
 { //метод построчно выводит трехмерный массив, добавляя индексы каждого элемента
     int firstDim = array3d.GetLength(0);
     int secondDim = array3d.GetLength(1);
     int thirdDim = array3d.GetLength(2);
-    int t = array3d.GetLength(2);
     for (int i = 0; i < firstDim; i++)
     {
         for (int j = 0; j < secondDim; j++)
@@ -69,7 +70,7 @@ int thirdDim = int.Parse(Console.ReadLine()!);
 
 Console.WriteLine(String.Empty);
 
-int[,,] workingArray = GetArrayWithoutDuplicate(firstDim, secondDim, thirdDim);
+int[,,] workingArray = GetArray3d(firstDim, secondDim, thirdDim);
 Console.WriteLine("Элементы трехмерного массива (в скобках указаны индексы): ");
-GetLineArray(workingArray);
+GetLineArray3d(workingArray);
 
