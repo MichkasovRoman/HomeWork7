@@ -52,7 +52,7 @@ void GetLineArray3d(int[,,] array3d)
         {
             for (int k = 0; k < thirdDim; k++)
             {
-                Console.WriteLine($"{array3d[i, j, k]}({i}, {j}, {k}) ");
+                Console.Write($"{array3d[i, j, k]}({i}, {j}, {k}) ");
             }
         }
     }
