@@ -92,11 +92,17 @@ int[,] GetSpiral(int[,] array2d)
 }
 
 Console.Clear();
-int n = int.Parse(Console.ReadLine()!);
-int a = int.Parse(Console.ReadLine()!);
-int b = int.Parse(Console.ReadLine()!);
-int[,] workingarray = GetSquareArray(n, a, b);
-PrintArray(workingarray);
+Console.Write("Введите размер квадратного массива: ");
+int size = int.Parse(Console.ReadLine()!);
+Console.Write("Введите значение левой границы диапазона: ");
+int leftEdge = int.Parse(Console.ReadLine()!);
+Console.Write("Введите значение левой границы диапазона: ");
+int rightEdge = int.Parse(Console.ReadLine()!);
 Console.WriteLine(String.Empty);
-int[,] newArray = GetSpiral(workingarray);
-PrintArray(newArray);
+int[,] workingArray = GetSquareArray(size, leftEdge, rightEdge);
+Console.WriteLine("Изначальный массив: ");
+PrintArray(workingArray);
+Console.WriteLine(String.Empty);
+int[,] spiralArray = GetSpiral(workingArray);
+Console.WriteLine("Массив, полученный из первого массива расстановкой элементов по спирали (по часовой стрелке): ");
+PrintArray(spiralArray);
